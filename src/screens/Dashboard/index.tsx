@@ -3,6 +3,7 @@ import React from 'react';
 
 import {Container, Header, UserInfo, Photo, User, UserGreeting, UserName, UserContainer, Icon} from './styles';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { HighLightCard } from '../../components/HighLightCards';
 
 export function Dashboard() {
     return(
@@ -19,6 +20,8 @@ export function Dashboard() {
                     <Icon name="power-off"/>
                 </UserContainer>    
             </Header>
+
+            <HighLightCard />
         </Container>
     );    
 }
