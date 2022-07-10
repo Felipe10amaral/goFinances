@@ -1,7 +1,16 @@
 import React from 'react';
 
 
-import {Container, Header, UserInfo, Photo, User, UserGreeting, UserName, UserContainer, Icon} from './styles';
+import {Container, 
+        Header, 
+        UserInfo, 
+        Photo, 
+        User, 
+        UserGreeting, 
+        UserName, 
+        UserContainer,
+        HighLightCards, 
+        Icon} from './styles';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { HighLightCard } from '../../components/HighLightCards';
 
@@ -20,8 +29,16 @@ export function Dashboard() {
                     <Icon name="power-off"/>
                 </UserContainer>    
             </Header>
-
-            <HighLightCard />
+            <HighLightCards
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={{ paddingLeft: 24 }}
+            >
+                <HighLightCard />
+                <HighLightCard />
+                <HighLightCard />
+            </HighLightCards>
+            
         </Container>
     );    
 }
