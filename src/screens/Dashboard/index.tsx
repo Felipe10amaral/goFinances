@@ -30,13 +30,11 @@ export function Dashboard() {
                 </UserContainer>    
             </Header>
             <HighLightCards
-                horizontal
-                showsHorizontalScrollIndicator={false}
-                contentContainerStyle={{ paddingLeft: 24 }}
+                
             >
-                <HighLightCard />
-                <HighLightCard />
-                <HighLightCard />
+                <HighLightCard type='up' amount='R$1.100,00' lastTransaction='10/05' title='Entrada'/>
+                <HighLightCard type='down' title='Saída' amount='R$70,00' lastTransaction='10/05'/>
+                <HighLightCard type='total' title='Total' amount='R$1.030,00' lastTransaction='11/05'/>
             </HighLightCards>
             
         </Container>
