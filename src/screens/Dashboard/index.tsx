@@ -9,10 +9,12 @@ import {Container,
         UserGreeting, 
         UserName, 
         UserContainer,
-        HighLightCards, 
+        HighLightCards,
+        Transactions,
+        Title, 
         Icon} from './styles';
-import { RFValue } from 'react-native-responsive-fontsize';
 import { HighLightCard } from '../../components/HighLightCards';
+import { TransactionCard } from '../../components/TransactionCard';
 
 export function Dashboard() {
     return(
@@ -36,6 +38,12 @@ export function Dashboard() {
                 <HighLightCard type='down' title='Saída' amount='R$70,00' lastTransaction='10/05'/>
                 <HighLightCard type='total' title='Total' amount='R$1.030,00' lastTransaction='11/05'/>
             </HighLightCards>
+
+            <Transactions>
+                <Title>Listagem</Title>
+                
+                <TransactionCard />
+            </Transactions>
             
         </Container>
     );    
