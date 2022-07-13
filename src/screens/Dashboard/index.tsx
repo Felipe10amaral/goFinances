@@ -12,11 +12,40 @@ import {Container,
         HighLightCards,
         Transactions,
         Title, 
-        Icon} from './styles';
+        Icon,
+        TransactionsList} from './styles';
 import { HighLightCard } from '../../components/HighLightCards';
 import { TransactionCard } from '../../components/TransactionCard';
 
 export function Dashboard() {
+    const data = [{
+        title:'Desenvolvimento de site',
+        amount:'R$12.000',
+        category:{ 
+            name:"vendas", 
+            icon:"dollar-sign"
+        },
+        date:"13/05"
+    },
+    {
+        title:'Aplicativo',
+        amount:'R$8.000',
+        category:{ 
+            name:"vendas", 
+            icon:"dollar-sign"
+        },
+        date:"11/05"
+    },
+    {
+        title:'La Brasa Burger',
+        amount:'R$70',
+        category:{ 
+            name:"lanche", 
+            icon:"dollar-sign"
+        },
+        date:"11/05"
+    },
+    ];
     return(
         <Container>
             <Header>
@@ -41,8 +70,13 @@ export function Dashboard() {
 
             <Transactions>
                 <Title>Listagem</Title>
+                <TransactionsList 
+                    renderItem={({ item }) => <TransactionCard data={item}/>}
+                    data={data}
+                    showsVerticalScrollIndicator={false}
+                />
                 
-                <TransactionCard />
+                
             </Transactions>
             
         </Container>
