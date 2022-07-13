@@ -19,6 +19,7 @@ import { TransactionCard } from '../../components/TransactionCard';
 
 export function Dashboard() {
     const data = [{
+        type: 'positive',
         title:'Desenvolvimento de site',
         amount:'R$12.000',
         category:{ 
@@ -28,6 +29,7 @@ export function Dashboard() {
         date:"13/05"
     },
     {
+        type: 'positive',
         title:'Aplicativo',
         amount:'R$8.000',
         category:{ 
@@ -37,10 +39,21 @@ export function Dashboard() {
         date:"11/05"
     },
     {
+        type: 'negative',
         title:'La Brasa Burger',
         amount:'R$70',
         category:{ 
             name:"lanche", 
+            icon:"coffee"
+        },
+        date:"11/05"
+    },
+    {
+        type: 'negative',
+        title:'Aluguel',
+        amount:'R$600',
+        category:{ 
+            name:"moradia", 
             icon:"dollar-sign"
         },
         date:"11/05"

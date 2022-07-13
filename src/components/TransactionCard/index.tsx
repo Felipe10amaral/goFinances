@@ -7,18 +7,22 @@ import {Container,
         Icon,
         CategoryName,
         Date } from './styles';
-interface Category {
+
+interface CategoryProps {
     name: string;
     icon: string;
 }
 
-interface Props {
-    data:{
+interface Data {
+      type: 'positive' | 'negative';
       title: string;
       amount: string;
-      category: Category;
-      date: string;
-    }  
+      category: CategoryProps;
+      date: string;      
+}
+
+interface Props {
+    data: Data;
 }
 
 export function TransactionCard({data}: Props) {
@@ -26,7 +30,10 @@ export function TransactionCard({data}: Props) {
     return(
         <Container>
             <Title> {data.title} </Title>
-            <Amount> {data.amount} </Amount>
+            <Amount type={data.type}> 
+              { data.type === 'negative' && '- '}
+              {data.amount} 
+            </Amount>
 
             <Footer>
                 <Category>
