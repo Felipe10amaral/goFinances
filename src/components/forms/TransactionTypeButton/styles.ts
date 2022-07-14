@@ -7,15 +7,28 @@ interface IconProps {
     type: 'up' | 'down';
 }
 
-export const Container = styled(TouchableOpacity)`
-    width: 100%;
+interface ButtonProps {
+    isActive: boolean;
+    type: 'up' | 'down';
+}
+
+export const Container = styled(TouchableOpacity)<ButtonProps>`
+    width: 48%;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 
     border: 1.5px solid ${({theme}) => theme.colors.text};
     border-radius: 5px;
-    padding: 16px 59px;
+    padding: 16px ;
+
+    ${({isActive, type}) => isActive && type === 'up' && css`
+        background-color: ${({theme}) => theme.colors.success_light};
+    `};
+
+    ${({isActive, type}) => isActive && type === 'down' && css`
+        background-color: ${({theme}) => theme.colors.attention_light};
+    `};
 `;
 
 export const Title = styled.Text`
@@ -28,7 +41,7 @@ export const Icon = styled(Feather)<IconProps>`
     margin-right: 12px;
 
     ${(props) => props.type === 'up' && css`
-        color: ${({theme}) => theme.colors.success_light};
+        color: ${({theme}) => theme.colors.success};
     `};
 
     ${(props) => props.type === 'down' && css`

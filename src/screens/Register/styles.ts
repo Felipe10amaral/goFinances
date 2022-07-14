@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 export const Container = styled.View`
     background-color: ${({theme}) => theme.colors.background};
     flex: 1;
+    
 `;
 
 export const Header = styled.View`
@@ -32,4 +33,7 @@ export const Form = styled.View`
 
 export const Fields = styled.View``;
 
-export const TransactionsTypes = styled.View``;
+export const TransactionsTypes = styled.View`
+    flex-direction: row;
+    justify-content: space-between;
+`;
