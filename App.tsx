@@ -26,7 +26,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       
-        <CategoryModal />
+        <Register />
      
       
     </ThemeProvider>
