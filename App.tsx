@@ -8,6 +8,7 @@ import {NavigationContainer} from '@react-navigation/native';
 
 import * as SplashScreen from 'expo-splash-screen';
 import { AppRoutes } from './src/routes/app.routes';
+import { CategoryModal } from './src/screens/CategoryModal';
 
 export default function App() {
   SplashScreen.preventAutoHideAsync();
@@ -25,7 +26,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       
-        <Register />
+        <CategoryModal />
      
       
     </ThemeProvider>
