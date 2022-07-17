@@ -1,20 +1,32 @@
 import React, {useState} from 'react';
+import { useForm } from 'react-hook-form';
 import { Modal } from 'react-native';
 
 import { Button } from '../../components/forms/Button';
 import { CategorySelect } from '../../components/forms/CategorySelect';
 import { Input } from '../../components/forms/input';
+import { InputForm } from '../../components/forms/InputForm';
 import { TransactionTypeButton } from '../../components/forms/TransactionTypeButton';
 import { CategoryModal } from '../CategoryModal';
 import {Container, Header, Title, Form, Fields, TransactionsTypes} from './styles';
 
+interface FormData {
+    [name: string]: any;
+    
+}
+
 export function Register() {
     const [ transactionType, setTransactionType ] = useState('');
     const [categoryModalOpen, setCategoryModalOpen] = useState(false);
+
+    
+
     const [category, setCategory] = useState({
         key: 'category',
         name: 'Categoria'
     });
+
+    const { control, handleSubmit} = useForm();
 
     function handleTransactionTypeSelect(type: 'up' | 'down') {
         setTransactionType(type);
@@ -27,6 +39,17 @@ export function Register() {
     function handleOpenSelectCategoryModal() {
         setCategoryModalOpen(true);
     }
+
+    function handleRegister(form: FormData) {
+       const data = {
+            name: form.name,
+            amount: form.amount,
+            transactionType,
+            category: category.key
+        }
+
+        console.log(data); 
+    }
     return(
         <Container>
             <Header>
@@ -34,11 +57,15 @@ export function Register() {
             </Header>
           <Form>
            <Fields> 
-            <Input 
+            <InputForm
                 placeholder='Nome'
+                control={control}
+                name="nome"
             />
-            <Input 
+            <InputForm 
                 placeholder='Preço'
+                control={control}
+                name="preco"
             />
 
               <TransactionsTypes>
@@ -62,7 +89,9 @@ export function Register() {
               />  
            </Fields> 
             <Button 
-            title='Enviar'/>
+                title='Enviar'
+                onPress={ handleSubmit(handleRegister) }            
+            />
            
           </Form>  
 
