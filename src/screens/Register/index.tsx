@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { useForm } from 'react-hook-form';
 import { Modal } from 'react-native';
+import { TouchableWithoutFeedback, Keyboard, Alert} from 'react-native';
 
 import { Button } from '../../components/forms/Button';
 import { CategorySelect } from '../../components/forms/CategorySelect';
@@ -42,6 +43,13 @@ export function Register() {
     }
 
     function handleRegister(form: FormData) {
+        if(!transactionType) {
+            Alert.alert("Erro", "Selecione um tipo de transação");
+        }
+
+        if(category.key === 'category' ){
+            Alert.alert("Erro", "Selecione a categoria");
+        }
        const data = {
             name: form.name,
             amount: form.amount,
@@ -52,7 +60,9 @@ export function Register() {
         console.log(data); 
     }
     return(
-        <Container>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>   
+          <Container>
+           
             <Header>
                 <Title> Cadastro </Title>
             </Header>
@@ -62,12 +72,14 @@ export function Register() {
                 placeholder='Nome'
                 control={control}
                 name="name"
-                
+                autoCapitalize="characters"
+                autoCorrect={false}
             />
             <InputForm 
                 placeholder='Preço'
                 control={control}
                 name="amount"
+                keyboardType="numeric"
             />
 
               <TransactionsTypes>
@@ -104,7 +116,9 @@ export function Register() {
                 closeSelectCategory={handleCloseSelectCategoryModal}
             />
           </Modal>
-        </Container>
+          
+          </Container>
+        </TouchableWithoutFeedback>  
     );
 
 }
