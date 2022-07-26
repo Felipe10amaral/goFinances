@@ -19,7 +19,8 @@ export function Register() {
     const [ transactionType, setTransactionType ] = useState('');
     const [categoryModalOpen, setCategoryModalOpen] = useState(false);
 
-    
+    const [name, setName] = useState('');
+    const [amount, setAmount] = useState(0);
 
     const [category, setCategory] = useState({
         key: 'category',
@@ -60,12 +61,13 @@ export function Register() {
             <InputForm
                 placeholder='Nome'
                 control={control}
-                name="nome"
+                name="name"
+                
             />
             <InputForm 
                 placeholder='Preço'
                 control={control}
-                name="preco"
+                name="amount"
             />
 
               <TransactionsTypes>
