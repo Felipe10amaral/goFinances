@@ -2,10 +2,11 @@ import React, {useState} from 'react';
 import { useForm } from 'react-hook-form';
 import { Modal } from 'react-native';
 import { TouchableWithoutFeedback, Keyboard, Alert} from 'react-native';
+import * as Yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 import { Button } from '../../components/forms/Button';
 import { CategorySelect } from '../../components/forms/CategorySelect';
-import { Input } from '../../components/forms/input';
 import { InputForm } from '../../components/forms/InputForm';
 import { TransactionTypeButton } from '../../components/forms/TransactionTypeButton';
 import { CategoryModal } from '../CategoryModal';
@@ -15,6 +16,17 @@ interface FormData {
     [name: string]: any;
     
 }
+
+const scheme = Yup.object().shape({
+    name: Yup
+        .string()
+        .required('Nome é obrigatório'),
+    amount: Yup
+        .number()
+        .typeError('Informe um valor numérico')
+        .positive(' O valor não pode ser negativo')
+        .required(' O valor é obrigatório')
+})
 
 export function Register() {
     const [ transactionType, setTransactionType ] = useState('');
@@ -28,7 +40,9 @@ export function Register() {
         name: 'Categoria'
     });
 
-    const { control, handleSubmit} = useForm();
+    const { control, handleSubmit, formState: {errors}} = useForm({
+        resolver: yupResolver(scheme)
+    });
 
     function handleTransactionTypeSelect(type: 'up' | 'down') {
         setTransactionType(type);
@@ -74,12 +88,14 @@ export function Register() {
                 name="name"
                 autoCapitalize="characters"
                 autoCorrect={false}
+                error={errors.name && errors.name.message}
             />
             <InputForm 
                 placeholder='Preço'
                 control={control}
                 name="amount"
                 keyboardType="numeric"
+                error={errors.amount && errors.amount.message}
             />
 
               <TransactionsTypes>
