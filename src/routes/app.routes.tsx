@@ -1,6 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {Dashboard} from '../screens/Dashboard';
+import { Register } from '../screens/Register';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -14,7 +15,7 @@ export function AppRoutes() {
         />
         <Screen 
           name='Cadastrar'
-          component={Dashboard}
+          component={Register}
         />
         <Screen 
           name='Resumo'
